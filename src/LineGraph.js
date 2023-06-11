@@ -12,6 +12,7 @@ import {Line} from "react-chartjs-2"
 import { format } from 'date-fns';
 import 'chartjs-adapter-date-fns';
 import {enUS} from 'date-fns/locale';
+import './LineGraph.css'
 
 function LineGraph() {
     ChartJS.register(
