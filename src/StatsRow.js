@@ -1,14 +1,15 @@
 import React from 'react'
+import './StatsRow.css'
 
-function StatsRow() {
+function StatsRow(props) {
   return (
     <div className="row">
         <div className="row__intro">
-            {/* <h1>{props?.name}</h1> */}
-            <h1>AAPL</h1>
-            {/* <p>{props.volume &&
-                (propps.volume + " shares")}</p> */}
-                <p>200 Shares</p>
+            <h1>{props.name}</h1>
+            {/* <h1>AAPL</h1> */}
+            <p>{props.volume &&
+                (props.volume + " shares")}</p>
+            {/* <p>200 Shares</p> */}
         </div>
         <div className="row__chart">
             {/* <img src={StockChart} height={16}/> */}
