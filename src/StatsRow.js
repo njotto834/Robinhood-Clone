@@ -1,8 +1,12 @@
 import React from 'react'
 import './StatsRow.css'
+import StockSVG from './stock.svg'
 
 function StatsRow(props) {
-  return (
+
+    const percentage = ((props.price - props.openPrice)/props.openPrice)*100
+
+    return (
     <div className="row">
         <div className="row__intro">
             <h1>{props.name}</h1>
@@ -12,13 +16,11 @@ function StatsRow(props) {
             {/* <p>200 Shares</p> */}
         </div>
         <div className="row__chart">
-            {/* <img src={StockChart} height={16}/> */}
+            <img src={StockSVG} height={16}/>
         </div>
         <div className="row__numbers">
-            {/* <p className="row__price">{props.price}</p>
-            <p className="row__percentage"> +{Number(percentage).toFixed(2)}</p> */}
-            <p className="row__price">$200.00</p>
-            <p className="row__percentage"> +2%</p>
+            <p className="row__price">{props.price}</p>
+            <p className="row__percentage"> {Number(percentage).toFixed(2)}%</p>
         </div>
     </div>
   )
