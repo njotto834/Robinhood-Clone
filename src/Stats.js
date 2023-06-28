@@ -10,16 +10,15 @@ function Stats() {
   const BASE_URL = 'https://finnhub.io/api/v1/quote'
   const [stockData, setStockData] = useState([])
   const [ myStocks, setMyStocks ] = useState([])
+
   const getMyStocks = () => {
     db
     .collection('myStocks')
     .onSnapshot(snapshot => {
       console.log(snapshot)
-
       let promises = []
       let tempData = []
       snapshot.docs.map((doc) => {
-        console.log(doc.data())
         promises.push(getStockData(doc.data().ticker)
         .then(res => {
           tempData.push({
@@ -30,8 +29,13 @@ function Stats() {
         })
         )
       })
+      Promise.all(promises).then(()=>{
+        console.log(tempData)
+        setMyStocks(tempData)
+      })
     })
   }
+
   const getStockData = (stock) => {
     return axios
       .get(`${BASE_URL}?symbol=${stock}&token=${TOKEN}`)
@@ -56,7 +60,6 @@ function Stats() {
         })
       )
     })
-
     Promise.all(promises).then(() => {
       setStockData(stockData)
       console.log(stockData)
@@ -71,12 +74,13 @@ function Stats() {
           </div>
           <div className="stats__content">
             <div className="stats__rows">
-              {stockData.map((stock) => (
+              {myStocks.map((stock) => (
                 <StatsRow
-                  key={stock.name}
-                  name={stock.name}
-                  openPrice={stock.o}
-                  price={stock.c}
+                  key={stock.data.ticker}
+                  name={stock.data.ticker}
+                  openPrice={stock.info.o}
+                  price={stock.info.c}
+                  shares={stock.data.shares}
                   />
               ))}
             </div>
