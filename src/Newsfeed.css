@@ -19,9 +19,36 @@
     margin-top: 0px;
 }
 
-.newfeed__buying__section {
+.newsfeed__buying__section {
     display:flex;
     justify-content: space-between;
     border-bottom: 1px solid #3b4754;
     padding: 20px 3px 20px 3px;
+}
+
+.newsfeed__market__section {
+    margin-top: 60px;
+}
+
+.newsfeed__market__box {
+    height: 10vh;
+    padding: 20px;
+    border: 1px solid #31363A;
+    border-radius: 4px;
+}
+
+.newsfeed__market__box p{
+    color: #7B858A;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.newsfeed__popularlists__intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px 20px 0px;
+    margin-top: 20px;
 }
