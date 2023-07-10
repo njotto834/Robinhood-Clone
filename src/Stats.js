@@ -15,7 +15,6 @@ function Stats() {
     db
     .collection('myStocks')
     .onSnapshot(snapshot => {
-      console.log(snapshot)
       let promises = []
       let tempData = []
       snapshot.docs.map((doc) => {
@@ -87,6 +86,18 @@ function Stats() {
           </div>
           <div className="stats__header stats__lists">
             <p>Lists</p>
+          </div>
+          <div className="stats__content">
+          <div className="stats__rows">
+            {myStocks.map((stock) => (
+              <StatsRow
+              key={stock.data.ticker}
+              name={stock.data.ticker}
+              openPrice={stock.info.o}
+              price={stock.info.c}
+              />
+            ))}
+          </div>
           </div>
         </div>
     </div>
